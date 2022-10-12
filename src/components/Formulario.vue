@@ -59,7 +59,7 @@
                 proyecto: this.proyecto,
                 tipo : this.tipo,
                 urgente : this.urgente,
-                completado : false
+               
             };
           
         this.proyectos.push(proyecto),
@@ -78,13 +78,8 @@
           this.saveData();
         },
         
-        limpiarData(){
-          this.proyectos = [];
-          localStorage.clear();
-        },
-        saveData(){
-          this.proyecto = JSON.stringify(localStorage.getItem("proyectos"))
-        }
+        
+        
   
       },
 
@@ -98,13 +93,10 @@
           this.proyectos.map(proyecto =>{
             if (proyecto.completado) 
               completados++;
-            
           });
           return (completados * 100) / this.numeroProyectos || 0;
         },
-        mounted(){
-        this.proyectos =  JSON.parse(localStorage.getItem("proyectos"))
-      }
+        
       },
 
       
