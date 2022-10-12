@@ -27,7 +27,6 @@ src: url("https://fonts.gstatic.com");
 }
 h1{
   font-family: Oswald;
-  font-variant: small-caps;
 }
 
   </style>

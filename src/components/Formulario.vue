@@ -1,12 +1,10 @@
 <template>
 
-  <div class="row"> 
-    <div class="col-12 mb-4">
-      <progress-bar :porcentaje="porcentaje"/>
-  </div>
+  <div class="container"> 
+    
       <!-- bootstrap form -->
       <div class="row">
-        <form @submit.prevent="registrarProyecto" class="col-12 col-md-4 mt-3">
+        <form @submit.prevent="registrarProyecto" class="">
           <div class="mb-3">
             <label for="" class="form-label">Proyecto</label>
             <input v-model.trim="proyecto" type="text" class="form-control" required>
@@ -26,32 +24,20 @@
           </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
-        <div class="col-12 col-md-8">
-          <total-proyectos 
-          :numeroProyectos="numeroProyectos" 
-          :proyectos="proyectos" 
-          :cambiarEstado="cambiarEstado"
-          :limpiarData="limpiarData"/>
-        </div>
+        
           </div>
   </div>
 </template>
 
 <script>
-  import TotalProyectos from './TotalProyectos.vue';
-  import ProgressBar from './ProgressBar.vue'
 
     export default{
-      components:{
-        TotalProyectos,
-        ProgressBar
-      },
       data:()=>({
         proyecto:"",
         tipo:"",
         urgente:false,
         proyectos:[],
-        numeroProyectos:0,
+        
       }),
       methods:{
         registrarProyecto(){
@@ -62,20 +48,10 @@
                
             };
           
-        this.proyectos.push(proyecto),
-        this.numeroProyectos++;
         this.proyecto = "",
         this.tipo = "",
         this.urgente = false,
-        console.log(this.proyectos)
-        },
-        
-        
-        cambiarEstado(proyecto,campo){
-          //this.urgente = !this.urgente;
-          //this.proyectos[id].urgente = !this.proyectos[id].urgente;
-          proyecto[campo] = !proyecto[campo];
-          this.saveData();
+        console.log("Datos guardados");
         },
         
         
@@ -83,21 +59,7 @@
   
       },
 
-      computed:{
-        numeroProyectos(){
-          return this.proyectos.length;
-        },
-        porcentaje(){
-          let completados = 0;
-          
-          this.proyectos.map(proyecto =>{
-            if (proyecto.completado) 
-              completados++;
-          });
-          return (completados * 100) / this.numeroProyectos || 0;
-        },
-        
-      },
+      
 
       
     };
